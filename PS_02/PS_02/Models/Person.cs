@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace DOT_NET_PS_02.Models
 {
-    public enum Gender
-    {
-
-    }
     public class Person
     {
         [Display(Name = "Imię")]
@@ -27,7 +23,6 @@ namespace DOT_NET_PS_02.Models
         public double Age;
         [Display(Name = "Płeć")]
         [Required(ErrorMessage = "Pole 'Płeć' jest obowiązkowe")]
-        
-
+        public Gender Gender;
     }
 }
