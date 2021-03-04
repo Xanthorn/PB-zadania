@@ -11,7 +11,23 @@
                 <div class="justify-content-center">
                     <div class="text-center"><h1>Oblicz swój wskaźnik BMI</h1></div>
                     <div>
+                        <form method="post">
+                            <div>
+                                <input asp-for="Person.Name" pattern="([A-Z]{1})([a-z]+)" maxlength="15" placeholder="Imię" required />
+                                <span asp-validation-for="Person.Name"></span>
+                            </div>
+                            <input asp-for="Person.Email" type="email" placeholder="Adres E-mail (opcjonalne)" />
+                            <span asp-validation-for="Person.Email"></span><br />
+                            <input asp-for="Person.Height" type="number" pattern="[0-9]+" max="250" placeholder="Wzrost" required/>
+                            <select name="HeightUnit">
+                                <option value="1">cm</option>
+                                <option value="2">m</option>
+                            </select><br />
+                            <input asp-for="Person.Weight" type="number" pattern="[0-9]+" max="300" placeholder="Waga" required/><br />
+                            <input asp-for="Person.Age" type="number" pattern="[0-9]+" max="120" placeholder="Wiek (opcjonalne)" /><br />
 
+                            <input type="submit" />
+                        </form>
                     </div>
                 </div>
             </div>

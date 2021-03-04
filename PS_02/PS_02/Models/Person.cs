@@ -12,15 +12,16 @@ namespace DOT_NET_PS_02.Models
         [Required(ErrorMessage = "Pole 'Imię' jest obowiązkowe")]
         public string Name;
         [Display(Name = "E-mail")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Nieprawidłowy format adresu e-mail")]
         public string Email;
         [Display(Name = "Wzrost")]
-        [Required(ErrorMessage = "Pole 'Wzrost' jest obowiązkowe")]
+        [Required(ErrorMessage = "Wprowadź wzrost")]
         public double Height;
         [Display(Name = "Waga")]
         [Required(ErrorMessage = "Pole 'Waga' jest obowiązkowe")]
         public double Weight;
         [Display(Name = "Wiek")]
-        public double Age;
+        public int Age;
         [Display(Name = "Płeć")]
         [Required(ErrorMessage = "Pole 'Płeć' jest obowiązkowe")]
         public Gender Gender;
