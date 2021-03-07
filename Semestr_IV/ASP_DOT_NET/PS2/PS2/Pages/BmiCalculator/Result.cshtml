@@ -1,7 +1,23 @@
 ﻿@page
 @model PS2.Pages.BmiCalculator.ResultModel
 @{
+    Model.person = Newtonsoft.Json.JsonConvert.DeserializeObject<PS2.Models.Person>((string)TempData["tempPerson"]);
+    if((string)TempData["tempHeightUnit"] == "1")
+    {
+        Model.result = Model.person.Weight / (Model.person.Height / 100 * Model.person.Height / 100);
+    }
 }
-@{ 
-    
-}
+
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="border border-primary">
+                <div class="justify-content-center">
+                    <div class="text-center"><h1>Twój wynik to:</h1></div>
+                    <div class="text-center"><h2>@Model.result</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

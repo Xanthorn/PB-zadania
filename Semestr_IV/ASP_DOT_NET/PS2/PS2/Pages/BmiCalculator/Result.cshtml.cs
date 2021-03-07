@@ -11,7 +11,9 @@ namespace PS2.Pages.BmiCalculator
     public class ResultModel : PageModel
     {
         [BindProperty]
-        Person person { get; set; }
+        public Person person { get; set; }
+        [BindProperty]
+        public double? result { get; set; }
         public void OnGet()
         {
         }
