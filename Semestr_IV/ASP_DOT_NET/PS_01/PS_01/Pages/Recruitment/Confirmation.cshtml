@@ -1,0 +1,23 @@
+﻿@page
+@model PS_01.Pages.RecruitmentConfirmationModel
+@{
+    Model.JsonCandidate = (string)TempData["JsonCandidate"];
+    Model.Candidate = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Candidate>(Model.JsonCandidate);
+}
+
+<div style:"text-justify">
+    <h3>Dziękujemy za wzięcie udziału w rekrutacji</h3>
+    <h4>Podane dane:</h4>
+    Imię: @Model.Candidate.FirstName <br />
+    Nazwisko: @Model.Candidate.LastName<br />
+    Wiek: @Model.Candidate.Age<br />
+    Płeć: @Model.Candidate.Gender<br />
+    Numer Telefonu: @Model.Candidate.PhoneNumber<br />
+    Znane języki programowania:<br />
+    @{ for(int i = 0; i < Model.Candidate.ProgrammingLanguages.Count; i++)
+        {
+            @Model.Candidate.ProgrammingLanguages[i]; <br />
+        }
+    }
+    
+</div>

@@ -1,0 +1,44 @@
+﻿@page
+@model PS_01.Pages.Recruitment.FormModel
+@{
+    ViewData["Title"] = "Rekrutacja";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Rekrutacja</h1><br />
+</div>
+
+<div style="text-align:left">
+    <fieldset>
+        <legend>Dane kandydata</legend>
+        <form method="post">
+            <input type="text" placeholder="Imię" asp-for="Candidate.FirstName" pattern="[a-zA-Z]*" required /><br />
+            <input type="text" placeholder="Nazwisko" asp-for="Candidate.LastName" pattern="[a-zA-Z]*" required /><br />
+            <input type="text" placeholder="Wiek" asp-for="Candidate.Age" pattern="[0-9]{1,3}" max="120" required /><br />
+            <input type="tel" placeholder="Numer Telefonu" asp-for="Candidate.PhoneNumber" pattern="[0-9]*" required /><br />
+            Płeć:<br />
+            <label><input type="radio" value="0" asp-for="Candidate.Gender" required />Mężczyzna</label>
+            <label><input type="radio" value="1" asp-for="Candidate.Gender" />Kobieta</label>
+            <label><input type="radio" value="2" asp-for="Candidate.Gender" />Inna</label><br />
+            Języki programowania:<br />
+            <label><input type="checkbox" value="true" asp-for="Cpp" />C++</label>
+            <label><input type="checkbox" value="true" asp-for="Cs" />C#</label>
+            <label><input type="checkbox" value="true" asp-for="Java" />Java</label><br />
+            <input type="submit" />
+        </form>
+    </fieldset>
+</div>
+
+<div style="text-align:justify">
+    <small>
+        Informujemy, że administratorem danych jest SzymBorRog Development. z siedzibą w Białymstoku ul. Wiejska 45 A, 15-352 (dalej jako "administrator").
+        Masz prawo do żądania dostępu do swoich danych osobowych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, prawo do wniesienia sprzeciwu wobec
+        przetwarzania, a także prawo do przenoszenia danych oraz wniesienia skargi do organu nadzorczego. Dane osobowe przetwarzane będą w celu realizacji procesu
+        rekrutacji. Podanie danych w zakresie wynikającym z ustawy z dnia 26 czerwca 1974 r. Kodeks pracy jest obowiązkowe. W pozostałym zakresie podanie danych
+        jest dobrowolne. Odmowa podania danych obowiązkowych może skutkować brakiem możliwości przeprowadzenia procesu rekrutacji. Administrator przetwarza dane
+        obowiązkowe na podstawie ciążącego na nim obowiązku prawnego, zaś w zakresie danych dodatkowych podstawą przetwarzania jest zgoda. Dane osobowe będą
+        przetwarzane do czasu zakończenia postępowania rekrutacyjnego i przez okres możliwości dochodzenia ewentualnych roszczeń, a w przypadku wyrażenia zgody na
+        udział w przyszłych postępowaniach rekrutacyjnych - do czasu wycofania tej zgody. Zgoda na przetwarzanie danych osobowych może zostać wycofana w dowolnym
+        momencie. Odbiorcą danych jest serwis Just Join IT oraz inne podmioty, którym powierzyliśmy przetwarzanie danych w związku z rekrutacją.
+    </small>
+</div>
