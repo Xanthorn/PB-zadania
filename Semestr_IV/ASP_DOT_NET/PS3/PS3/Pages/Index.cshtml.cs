@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PS3.Pages
+namespace PS2.Pages
 {
     public class IndexModel : PageModel
     {
