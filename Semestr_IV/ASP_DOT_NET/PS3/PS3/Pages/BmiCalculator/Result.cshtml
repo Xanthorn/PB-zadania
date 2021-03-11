@@ -24,22 +24,22 @@
                     </div>
                     <div class="text-justify">
                         <h3>Podane dane:</h3>
-                        <label asp-for="person.Name">Imię: @Model.person.Name</label> <br />
+                        <label asp-for="person.Name"><b>Imię:</b> @Model.person.Name</label> <br />
                         @{
                             if (Model.person.Email != null)
                             {
-                                <label asp-for="person.Email">E-mail: @Model.person.Email</label> <br />
+                                <label asp-for="person.Email"><b>E-mail:</b> @Model.person.Email</label> <br />
                             }
                         }
-                        <label asp-for="person.Height">Wzrost: @Model.person.Height</label> <br />
-                        <label asp-for="person.Weight">Waga: @Model.person.Weight</label> <br />
+                        <label asp-for="person.Height"><b>Wzrost:</b> @Model.person.Height</label> <br />
+                        <label asp-for="person.Weight"><b>Waga:</b> @Model.person.Weight</label> <br />
                         @{
                             if (Model.person.Age != null)
                             {
-                                <label asp-for="person.Age">Wiek: @Model.person.Age</label> <br />
+                                <label asp-for="person.Age"><b>Wiek:</b> @Model.person.Age</label> <br />
                             }
                         }
-                        <label asp-for="person.Gender">Płeć: @Model.person.Gender</label> <br />
+                        <label asp-for="person.Gender"><b>Płeć:</b> @Model.person.Gender</label> <br />
                     </div>
                 </div>
             </div>
