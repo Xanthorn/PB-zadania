@@ -13,16 +13,16 @@
                     <div>
                         <form method="post">
                             <div>
-                                <input asp-for="person.Name" placeholder="Imię" /><br />
-                                <span asp-validation-for="person.Name"></span>
+                                <input asp-for="person.Name" placeholder="Imię" />
+                                <span asp-validation-for="person.Name" class="text-danger"></span>
                             </div>
                             <div>
                                 <input asp-for="person.Email" placeholder="Adres E-mail (opcjonalne)" />
-                                <span asp-validation-for="person.Email"></span>
+                                <span asp-validation-for="person.Email" class="text-danger"></span>
                             </div>
                             <div>
                                 <input asp-for="person.Height" placeholder="Wzrost"/>
-                                <span asp-validation-for="person.Height"></span>
+                                <span asp-validation-for="person.Height" class="text-danger"></span>
                                 <select name="HeightUnit">
                                     <option value="1">cm</option>
                                     <option value="2">m</option>
@@ -30,16 +30,16 @@
                             </div>
                             <div>
                                 <input asp-for="person.Weight"  placeholder="Waga"/>
-                                <span asp-validation-for="person.Weight"></span>
+                                <span asp-validation-for="person.Weight" class="text-danger"></span>
                             </div>
                             <div>
                                 <input asp-for="person.Age"  placeholder="Wiek (opcjonalne)" /><br />
-                                <span asp-validation-for="person.Age"></span>
+                                <span asp-validation-for="person.Age" class="text-danger"></span>
                             </div>
                             <div>
-                                Płeć:<br />
+                                <b>Płeć:</b><br />
                                 <label><input type="radio" name="Gender" value="Gender.Mężczyzna" required/>Mężczyzna</label>
-                                <label><input type="radio" name="Gender" value="Gender.Kobieta" />  Kobieta  </label>
+                                <label><input type="radio" name="Gender" value="Gender.Kobieta" />Kobieta</label>
                             </div>
                             <div>
                                 <input type="submit" name="Oblicz" />
