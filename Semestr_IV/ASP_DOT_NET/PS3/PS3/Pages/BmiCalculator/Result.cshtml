@@ -20,7 +20,16 @@
                 <div class="justify-content-center">
                     <div class="text-center">
                         <h1>Twój wynik to:</h1>
-                        <h2>@Model.result</h2>
+                        @{
+                            if (Model.result > 50 || Model.result < 10)
+                            {
+                                <h2 class="text-danger">@Model.result</h2>
+                            }
+                            else
+                            {
+                                <h2 class="text-success">@Model.result</h2>
+                            }
+                        }
                     </div>
                     <div class="text-justify">
                         <h3>Podane dane:</h3>
