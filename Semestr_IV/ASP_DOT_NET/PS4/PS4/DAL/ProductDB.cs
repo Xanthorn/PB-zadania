@@ -39,6 +39,10 @@ namespace PS4.DAL
             //return JsonConvert.SerializeObject(products);
             return JsonSerializer.Serialize(products);
         }
+        public void Edit(int id, Product modifiedProduct)
+        {
+            products[id - 1] = modifiedProduct;
+        }
         public List<Product> List()
         {
             return products;
