@@ -16,12 +16,12 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
-            <div class="border border-primary">
+            <div class="border border-primary rounded">
                 <div class="justify-content-center">
                     <div class="text-center">
                         <h1>Twój wynik to:</h1>
                         @{
-                            if (Model.result > 50 || Model.result < 10)
+                            if (Model.result > 25 || Model.result < 18.5)
                             {
                                 <h2 class="text-danger">@Model.result</h2>
                             }
@@ -30,25 +30,73 @@
                                 <h2 class="text-success">@Model.result</h2>
                             }
                         }
+
                     </div>
-                    <div class="text-justify">
+                    <div class="text-justify col-12 text-dark">
                         <h3>Podane dane:</h3>
-                        <label asp-for="person.Name"><b>Imię:</b> @Model.person.Name</label> <br />
+                        <div class="row">
+                            <div class="col-3">
+                                <label asp-for="person.Name"><b>Imię:</b></label>
+                            </div>
+                            <div class="col-3">
+                                @Model.person.Name
+                            </div>
+                        </div>
+
                         @{
                             if (Model.person.Email != null)
                             {
-                                <label asp-for="person.Email"><b>E-mail:</b> @Model.person.Email</label> <br />
+                                <div class="row text-dark">
+                                    <div class="col-3">
+                                        <label asp-for="person.Email"><b>E-mail:</b></label>
+                                    </div>
+                                    <div class="col-3">
+                                        @Model.person.Email
+                                    </div>
+                                </div>
                             }
                         }
-                        <label asp-for="person.Height"><b>Wzrost:</b> @Model.person.Height</label> <br />
-                        <label asp-for="person.Weight"><b>Waga:</b> @Model.person.Weight</label> <br />
+
+                        <div class="row text-dark">
+                            <div class="col-3">
+                                <label asp-for="person.Height"><b>Wzrost:</b></label>
+                            </div>
+                            <div class="col-3">
+                                @Model.person.Height
+                            </div>
+                        </div>
+
+                        <div class="row text-dark">
+                            <div class="col-3">
+                                <label asp-for="person.Weight"><b>Waga:</b></label>
+                            </div>
+                            <div class="col-3">
+                                @Model.person.Weight
+                            </div>
+                        </div>
+
                         @{
                             if (Model.person.Age != null)
                             {
-                                <label asp-for="person.Age"><b>Wiek:</b> @Model.person.Age</label> <br />
+                                <div class="row text-dark">
+                                    <div class="col-3">
+                                        <label asp-for="person.Age"><b>Wiek:</b></label>
+                                    </div>
+                                    <div class="col-3">
+                                        @Model.person.Age
+                                    </div>
+                                </div>
                             }
                         }
-                        <label asp-for="person.Gender"><b>Płeć:</b> @Model.person.Gender</label> <br />
+
+                        <div class="row text-dark">
+                            <div class="col-3">
+                                <label asp-for="person.Gender"><b>Płeć:</b></label>
+                            </div>
+                            <div class="col-3">
+                                @Model.person.Gender
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

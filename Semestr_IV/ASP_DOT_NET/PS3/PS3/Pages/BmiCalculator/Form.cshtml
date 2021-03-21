@@ -7,42 +7,48 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
-            <div class="border border-primary">
+            <div class="d-block border border-3 border-primary rounded text-dark">
                 <div class="justify-content-center">
                     <div class="text-center"><h1>Oblicz swój wskaźnik BMI</h1></div>
                     <div>
                         <form method="post">
                             <div>
-                                <input asp-for="person.Name" placeholder="Imię" />
-                                <span asp-validation-for="person.Name" class="text-danger"></span>
+                                <input asp-for="person.Name" placeholder="Imię" class="form-control"/>
+                                <span  asp-validation-for="person.Name"></span>
                             </div>
                             <div>
-                                <input asp-for="person.Email" placeholder="Adres E-mail (opcjonalne)" />
-                                <span asp-validation-for="person.Email" class="text-danger"></span>
+                                <input asp-for="person.Email" placeholder="Adres E-mail (opcjonalne)" class="form-control"/>
+                                <span asp-validation-for="person.Email" class="form-text"></span>
                             </div>
-                            <div>
-                                <input asp-for="person.Height" placeholder="Wzrost"/>
-                                <span asp-validation-for="person.Height" class="text-danger"></span>
-                                <select name="HeightUnit">
+                            <div class="input-group">
+                                <input asp-for="person.Height" placeholder="Wzrost" class="form-control col-9"/>
+                                <span asp-validation-for="person.Height" class="form-text"></span>
+                                <select name="HeightUnit" class="custom-select col-3">
                                     <option value="1">cm</option>
                                     <option value="2">m</option>
                                 </select>
                             </div>
                             <div>
-                                <input asp-for="person.Weight"  placeholder="Waga"/>
-                                <span asp-validation-for="person.Weight" class="text-danger"></span>
+                                <input asp-for="person.Weight"  placeholder="Waga" class="form-control"/>
+                                <span asp-validation-for="person.Weight" class="form-text"></span>
                             </div>
                             <div>
-                                <input asp-for="person.Age"  placeholder="Wiek (opcjonalne)" /><br />
-                                <span asp-validation-for="person.Age" class="text-danger"></span>
+                                <input asp-for="person.Age"  placeholder="Wiek (opcjonalne)" class="form-control"/>
+                                <span asp-validation-for="person.Age" class="form-text"></span>
                             </div>
                             <div>
-                                <b>Płeć:</b><br />
-                                <label><input type="radio" name="Gender" value="Gender.Mężczyzna" required/>Mężczyzna</label>
-                                <label><input type="radio" name="Gender" value="Gender.Kobieta" />Kobieta</label>
+                                <div class="text-center">Płeć:</div>
+                                <div class="input-group justify-content-around">
+                                    <div class="form-check">
+                                        <label><input type="radio" name="Gender" value="Gender.Mężczyzna" class="form-check-input" required />Mężczyzna</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label><input type="radio" name="Gender" value="Gender.Kobieta" class="form-check-input" />Kobieta</label>
+                                    </div>
+                                </div>
                             </div>
                             <div>
-                                <input type="submit" name="Oblicz" />
+                                <button type="submit" class="btn btn-primary col-12">Oblicz</button>
                             </div>
                         </form>
                     </div>
