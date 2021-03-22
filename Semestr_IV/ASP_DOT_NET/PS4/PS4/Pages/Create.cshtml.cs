@@ -11,6 +11,10 @@ namespace PS4
         }
         public IActionResult OnPost()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
             LoadDB();
             productDB.Create(newProduct);
             SaveDB();

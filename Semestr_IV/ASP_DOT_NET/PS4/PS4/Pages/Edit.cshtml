@@ -13,10 +13,7 @@
                     <form method="post">
                         <div class="form-group">
                             <input asp-for="EditProduct.name" placeholder="Nazwa" required class="form-control col-12"/>
-                            <div class="input-group">
-                                <input asp-for="EditProduct.price" placeholder="Cena" class="form-control col-12" required />
-                                <span asp-validation-for="EditProduct.price" class="text-danger"></span>
-                            </div>
+                            <input asp-for="EditProduct.price" placeholder="Cena" type="number" min="0" class="form-control col-12" required />
                             <input asp-for="EditProduct.id" hidden value="@Model.Id" />
                             <button type="submit" class="btn-secondary justify-content-center col-12">Zatwierdź</button>
                         </div>

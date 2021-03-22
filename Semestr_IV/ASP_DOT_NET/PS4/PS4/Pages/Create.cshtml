@@ -13,8 +13,8 @@
                     <h1>Dodaj produkt</h1>
                     <form class="form-horizontal col-12" method="post">
                         <div>
-                            <input asp-for="newProduct.name" placeholder="Nazwa" class="form-control">
-                            <input asp-for="newProduct.price" placeholder="Cena" class="form-control">
+                            <input asp-for="newProduct.name" placeholder="Nazwa" class="form-control" required>
+                            <input asp-for="newProduct.price" type="text" placeholder="Cena" class="form-control" min="0" required>
                             <button class="btn btn btn-primary col-12">Zatwierdź</button>
                         </div>
                     </form>

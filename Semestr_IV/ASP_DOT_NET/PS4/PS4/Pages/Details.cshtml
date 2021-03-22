@@ -1,4 +1,45 @@
-﻿@page
-@model PS4.Pages.DetailsModel
+﻿@page "{id?}"
+@model PS4.DetailsModel
 @{
+    ViewData["Title"] = "Szczegóły produktu";
 }
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="d-block border border-3 border-primary rounded ">
+            <div class="justify-content-center text-dark">
+                <div class="text-center"><h1>Szczegóły produktu:</h1></div>
+                <div class="text-justify col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            Nazwa:
+                        </div>
+                        <div class="col-6">
+                            @Model.ProductDetails.name
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Cena:
+                        </div>
+                        <div class="col-6">
+                            @Model.ProductDetails.price
+                        </div>
+                    </div>
+                    <form method="post">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-3"></div>
+                                <div class="col-9 justify-content-center">
+                                    <input type="submit" class="btn-primary" name="AddToCart" value="Dodaj do koszyka" />
+                                    <input type="submit" class="btn-primary" name="AddToCart" value="Wróć" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

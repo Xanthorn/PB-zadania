@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PS4.Models;
+using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace PS4
 {
@@ -27,6 +29,21 @@ namespace PS4
             Choose = Request.Form["Choose"];
             if(Choose == "true")
             {
+                string shoppingCart = Request.Cookies["ShoppingCart"];
+                if(shoppingCart != null)
+                {
+                    List<Product> productList = JsonSerializer.Deserialize<List<Product>>(shoppingCart);
+                    for (int i = 0; i < productList.Count; i++)
+                    {
+                        if (productList[i].id == Id)
+                        {
+                            productList.RemoveAt(i);
+                        }
+                    }
+                    var cookieOptions = new CookieOptions { Expires = DateTime.Now.AddDays(1) };
+                    string cookie = JsonSerializer.Serialize(productList);
+                    Response.Cookies.Append("ShoppingCart", cookie, cookieOptions);
+                }
                 LoadDB();
                 productDB.DeleteElement(Id);
                 SaveDB();

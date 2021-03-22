@@ -58,10 +58,14 @@ namespace PS4.DAL
         }
         private void AssignNewId(int id)
         {
-            for(int i = id - 1; i < products.Count - id + 1; i++) 
+            for(int i = id - 1; i < products.Count; i++) 
             {
                 products[i].id = i + 1;
             }
+        }
+        public int DbSize()
+        {
+            return products.Count();
         }
     }
 }

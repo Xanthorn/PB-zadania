@@ -17,6 +17,7 @@ namespace PS4.Models
         [Display(Name = "Cena")]
         [Required]
         [Range(0, 999999, ErrorMessage = "Cena powinna być z zakresu od 0 do 999 999")]
+        [DataType(DataType.Currency, ErrorMessage = "Cena powinna być wyrażona liczbowo")]
         public decimal price { get; set; }
         public static List<Product> GetProducts() 
         { 

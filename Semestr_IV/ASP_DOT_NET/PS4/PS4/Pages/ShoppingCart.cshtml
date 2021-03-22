@@ -1,0 +1,51 @@
+﻿@page
+@model PS4.Pages.ShoppingCartModel
+@{
+    ViewData["Title"] = "Koszyk";
+}
+<h2>Koszyk</h2>
+<div class="row">
+    <div class="row col-sm-12">
+        <form method="post">
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary btn-large" name="Delete" value="true">Opróżnij koszyk</button>
+                <a asp-page="List" class="btn btn-primary btn-large">Powrót</a>
+            </div>
+                 
+        </form>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => Model.ProductList[0].id)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => Model.ProductList[0].name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => Model.ProductList[0].price)
+            </th>
+            <th scope="col">Akcja</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.ProductList.Count > 0)
+                foreach (var p in Model.ProductList)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(m => p.id)</th>
+                        <td>@Html.DisplayFor(m => p.name)</td>
+                        <td>@Html.DisplayFor(m => p.price)</td>
+                        <td>
+                            <a asp-page="Details" asp-route-id=@p.id>Szczegóły</a> |
+                            <a asp-page="Edit" asp-route-id=@p.id>Edytuj</a> |
+                            <a asp-page="Delete" asp-route-id=@p.id>Kasuj</a> |
+                        </td>
+                    </tr>
+                }
+        }
+    </tbody>
+</table>
