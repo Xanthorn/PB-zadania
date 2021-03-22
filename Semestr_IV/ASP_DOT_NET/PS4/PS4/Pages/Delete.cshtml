@@ -1,0 +1,51 @@
+﻿@page "{id?}"
+@model PS4.DeleteModel
+@{
+    ViewData["Title"] = "Usunięcie produktu";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="d-block border border-3 border-primary rounded ">
+                <div class="justify-content-center text-dark">
+                    <div class="text-center"><h1>Czy na pewno chcesz usunąć produkt?</h1></div>
+                    <div class="text-justify col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                Nazwa:
+                            </div>
+                            <div class="col-6">
+                                @Model.DeleteProduct.name
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                Cena:
+                            </div>
+                            <div class="col-6">
+                                @Model.DeleteProduct.price
+                            </div>
+                        </div>
+                        <form method="post">
+                            <div class="input-group justify-content-center">
+                                <label>
+                                    Tak
+                                    <input type="radio" name="Choose" placeholder="Tak" value="true" required />
+                                </label>
+                                <label>
+                                    Nie
+                                    <input type="radio" name="Choose" placeholder="Nie" value="false" />
+                                </label>
+                            </div>
+                            <div class="justify-content-center col-6">
+                                <button type="submit" class="btn-secondary justify-content-center">Potwierdź</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
