@@ -25,7 +25,7 @@ namespace PS4.DAL
         private int GetNextId()
         {
             int lastID = products[products.Count - 1].id;
-            int newID = lastID++;
+            int newID = ++lastID;
             return newID;
         }
         public void Create(Product p)
@@ -46,6 +46,22 @@ namespace PS4.DAL
         public List<Product> List()
         {
             return products;
+        }
+        public Product GetElement(int id)
+        {
+            return (products[id - 1]);
+        }
+        public void DeleteElement(int id)
+        {
+            products.RemoveAt(id - 1);
+            AssignNewId(id);
+        }
+        private void AssignNewId(int id)
+        {
+            for(int i = id - 1; i < products.Count - id + 1; i++) 
+            {
+                products[i].id = i + 1;
+            }
         }
     }
 }
