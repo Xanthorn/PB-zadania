@@ -9,9 +9,12 @@ namespace PS4
         [BindProperty]
         public Product EditProduct { get; set; }
         [BindProperty]
-        public int id { get; set; }
-        public void OnGet()
+        public int Id { get; set; }
+        public void OnGet(int id)
         {
+            LoadDB();
+            Id = id;
+            EditProduct = productDB.GetElement(Id);
         }
         public IActionResult OnPost()
         {
@@ -20,8 +23,7 @@ namespace PS4
                 return Page();
             }
             LoadDB();
-            EditProduct.id = id;
-            productDB.Edit(id, EditProduct);
+            productDB.Edit(Id, EditProduct);
             SaveDB();
             return RedirectToPage("List");
         }

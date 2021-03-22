@@ -1,22 +1,28 @@
-﻿@page
+﻿@page "{id?}"
 @model PS4.EditModel
 @{
     ViewData["Title"] = "Edytuj produkt";
 }
-<h2>Edytuj produkt</h2>
-<br />
-<br />
-<div class="container">
-   <form method="post">
-       <div class="form-group">
-           <label asp-for="EditProduct.name"> Nazwa
-               <input asp-for="EditProduct.name" required/>
-           </label> <br />
-           <label asp-for="EditProduct.price"> Cena
-               <input asp-for="EditProduct.price" type="number" min="0" required /> 
-           </label>
-          <input asp-for="EditProduct.id" hidden value="0"/><br />
-           <button type="submit" class="btn-secondary">Zatwierdź</button>
-       </div>
-   </form>
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="d-block border border-3 border-primary rounded ">
+            <div class="justify-content-center text-dark">
+                <div class="text-center"><h1>Edytuj produkt</h1></div>
+                <div class="text-justify col-12">
+                    <form method="post">
+                        <div class="form-group">
+                            <input asp-for="EditProduct.name" placeholder="Nazwa" required class="form-control col-12"/>
+                            <div class="input-group">
+                                <input asp-for="EditProduct.price" placeholder="Cena" class="form-control col-12" required />
+                                <span asp-validation-for="EditProduct.price" class="text-danger"></span>
+                            </div>
+                            <input asp-for="EditProduct.id" hidden value="@Model.Id" />
+                            <button type="submit" class="btn-secondary justify-content-center col-12">Zatwierdź</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
