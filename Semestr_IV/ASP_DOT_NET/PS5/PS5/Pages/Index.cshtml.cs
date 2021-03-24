@@ -6,43 +6,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using System.Data.SqlClient;
 using System.Text;
+using PS5.Models;
 
 namespace PS5.Pages
 {
     public class IndexModel : PageModel
     {
+        [BindProperty]
+        public List<Product> Products { get; set; }
         private readonly ILogger<IndexModel> _logger;
-        public IConfiguration Configuration { get; }
-        public string lblInfoText;
+        private readonly IConfiguration _configuration;
         public IndexModel(IConfiguration configuration, ILogger<IndexModel> logger)
         {
             _logger = logger;
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
         public void OnGet()
         {
-            string Products = Configuration.GetConnectionString("PS5DB");
-
-            SqlConnection con = new SqlConnection(Products);
-            string sql = "SELECT * FROM Products";
-            SqlCommand cmd = new SqlCommand(sql, con);
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            StringBuilder htmlStr = new StringBuilder("");
-            while (reader.Read())
-            {
-                htmlStr.Append("<li>");
-                htmlStr.Append(reader["Id"].ToString() + " ");
-                htmlStr.Append(reader.GetString(1) + " ");
-                htmlStr.Append(String.Format("{0:0.00}",
-               Decimal.Parse(reader["Price"].ToString())));
-                htmlStr.Append("</li>");
-            }
-            reader.Close(); con.Close();
-            lblInfoText = htmlStr.ToString();
+            Products = ProductsDB.GetProducts(Products, _configuration);
         }
     }
 }
