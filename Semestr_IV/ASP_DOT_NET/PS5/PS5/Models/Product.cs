@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace PS5.Models
+{
+    public class Product
+    {
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Wprowadź Id")]
+        public int Id { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Wprowadź nazwę")]
+        [DataType(DataType.Text)]
+        public string Name { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Wprowadź cenę")]
+        [DataType(DataType.Currency)]
+        [Range(0, 99999999, ErrorMessage = "Wprowadź cenę z zakresu 0 - 99 999 999")]
+        public double Price { get; set; }
+    }
+}
