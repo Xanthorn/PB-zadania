@@ -14,16 +14,22 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6 input-group border-right border-left border-dark">
-                <input asp-for="NewProduct.Name" class="form-control" type="text" placeholder="Nazwa" required />
+                <input asp-for="NewProduct.Name" class="form-control" type="text" maxlength="50" placeholder="Nazwa" required />
             </div>
         </div>
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6 input-group border-right border-left border-dark">
-                <input asp-for="NewProduct.Price" class="form-control" type="text" min="0" max="99999999" pattern="([0-9]{1},[0-9]{1,2})|([1-9]{1}\d*,\d{1,2})|([1-9]\d*)" placeholder="Cena" required/>
+                <input asp-for="NewProduct.Price" class="form-control" type="text" min="0" max="99999999" pattern="([0-9]{1},[0-9]{1,2})|([1-9]{1}\d*,\d{1,2})|([1-9]\d*)" placeholder="Cena" required />
                 <div class="input-group-append">
                     <span class="input-group-text">zł</span>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 input-group border-right border-left border-dark">
+                <textarea asp-for="NewProduct.Description" class="form-control" maxlength="500" placeholder="Opis" required></textarea>
             </div>
         </div>
         <div class="row">

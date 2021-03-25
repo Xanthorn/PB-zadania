@@ -20,6 +20,7 @@ namespace PS5.Pages
         }
         public void OnGet()
         {
+
         }
         public IActionResult OnPost()
         {
@@ -28,7 +29,10 @@ namespace PS5.Pages
                 return Page();
             }
             else
+            {
+                ProductsDB.AddProduct(NewProduct, _configuration);
                 return RedirectToPage("/Index");
+            }
         }
     }
 }
