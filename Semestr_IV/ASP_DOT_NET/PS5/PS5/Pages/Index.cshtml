@@ -1,6 +1,43 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Lista produktów";
 }
-
+<div class="container">
+    <div class="row">
+            <div class="col text-left">
+                <h1>Lista produktów:</h1>
+            </div>
+            <div class="col"></div>
+            <div class="col text-right">
+                <h2>Dodaj nowy Produkt: <a asp-page="Add"><img src="~/glyphs/plus_32x32.png" /></a></h2>
+            </div>
+    </div>
+</div>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr class="text-center">
+            <th scope="col" colspan="2" class="col-2">Id</th>
+            <th scope="col" colspan="4" class="col-4">Nazwa</th>
+            <th scope="col" colspan="3" class="col-3">Cena</th>
+            <th scope="col" colspan="1" class="col-1">Szczegóły</th>
+            <th scope="col" colspan="1" class="col-1">Edytuj</th>
+            <th scope="col" colspan="1" class="col-1">Usuń</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ 
+            for(int i = 0; i < Model.Products.Count; i++)
+            {
+                <tr>
+                    <th colspan="2" class="col-2">@Model.Products[i].Id</th>
+                    <th colspan="4" class="col-4">@Model.Products[i].Name</th>
+                    <th colspan="3" class="col-3">@Model.Products[i].Price</th>
+                    <th colspan="1" class="text-center col-1"><img src="~/glyphs/info_32x32.png"/></th>
+                    <th colspan="1" class="text-center col-1"><img src="~/glyphs/edit_32x32.png" /></th>
+                    <th colspan="1" class="text-center col-1"><img src="~/glyphs/trash_32x32.png" /></th>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

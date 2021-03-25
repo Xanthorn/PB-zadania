@@ -10,4 +10,13 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Glyphs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Glyphs\64x64edit.png" />
+    <None Include="wwwroot\Glyphs\64x64plus.png" />
+  </ItemGroup>
+
 </Project>
