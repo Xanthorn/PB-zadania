@@ -27,11 +27,5 @@ namespace PS5.Pages
         {
             Products = ProductsDB.GetProducts(Products, _configuration);
         }
-
-
-        public IActionResult AddNewProduct()
-        {
-            return RedirectToPage("Add");
-        }
     }
 }
