@@ -12,6 +12,7 @@ namespace PS5.Models
         public int Id { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Wprowadź nazwę")]
         [DataType(DataType.Text)]
+        [MaxLength(50, ErrorMessage = "Nazwa nie może być dłuższa niż 50 znaków")]
         public string Name { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Wprowadź cenę")]
         [DataType(DataType.Currency)]
@@ -20,6 +21,7 @@ namespace PS5.Models
         public double Price { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Wprowadź opis")]
         [DataType(DataType.Text)]
+        [MaxLength(500, ErrorMessage = "Opis nie może być dłuższy niż 500 znaków")]
         public string Description { get; set; }
 
     }
