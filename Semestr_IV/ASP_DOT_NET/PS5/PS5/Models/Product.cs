@@ -16,6 +16,7 @@ namespace PS5.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Wprowadź cenę")]
         [DataType(DataType.Currency)]
         [Range(0, 99999999, ErrorMessage = "Wprowadź cenę z zakresu 0 - 99 999 999")]
+        [RegularExpression(@"^([0-9]{1},[0-9]{1,2})|([1-9]{1}\d*,\d{1,2})|([1-9]\d*)$")]
         public double Price { get; set; }
     }
 }
