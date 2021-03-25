@@ -32,10 +32,10 @@
                 <tr>
                     <th colspan="2" class="col-2">@Model.Products[i].Id</th>
                     <th colspan="4" class="col-4">@Model.Products[i].Name</th>
-                    <th colspan="3" class="col-3">@Model.Products[i].Price</th>
-                    <th colspan="1" class="text-center col-1"><img src="~/glyphs/info_32x32.png"/></th>
-                    <th colspan="1" class="text-center col-1"><img src="~/glyphs/edit_32x32.png" /></th>
-                    <th colspan="1" class="text-center col-1"><img src="~/glyphs/trash_32x32.png" /></th>
+                    <th colspan="3" class="col-3">@Model.Products[i].Price zł</th>
+                    <th colspan="1" class="text-center col-1"><a asp-page="Details" asp-route-id=@Model.Products[i].Id><img src="~/glyphs/info_32x32.png" /></a></th>
+                    <th colspan="1" class="text-center col-1"><a asp-page="Edit" asp-route-id=@Model.Products[i].Id><img src="~/glyphs/edit_32x32.png" /></a></th>
+                    <th colspan="1" class="text-center col-1"><a asp-page="Delete" asp-route-id=@Model.Products[i].Id><img src="~/glyphs/trash_32x32.png" /></a></th>
                 </tr>
             }
         }
