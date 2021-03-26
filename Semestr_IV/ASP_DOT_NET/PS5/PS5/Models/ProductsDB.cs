@@ -10,33 +10,33 @@ namespace PS5.Models
 {
     public class ProductsDB
     {
-        public static List<Product> GetProducts(List<Product> products, IConfiguration _configuration)
+        public static List<Product> GetProducts(List<Product> products, IConfiguration configuration)
         {
             products = new List<Product>();
 
-            string ConnectionString = _configuration.GetConnectionString("PS5DB");
+            string ConnectionString = configuration.GetConnectionString("PS5DB");
 
             SqlConnection con = new SqlConnection(ConnectionString);
             string sql = "SELECT * FROM Products";
             SqlCommand cmd = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
-            products = new List<Product>();
             while (reader.Read())
             {
                 Product product = new Product();
                 product.Id = Int32.Parse(reader["Id"].ToString());
                 product.Name = reader["Name"].ToString();
                 product.Price = Double.Parse(reader["Price"].ToString());
+                product.Description = reader["Description"].ToString();
                 products.Add(product);
             }
             reader.Close(); con.Close();
             return products;
         }
-        public static void AddProduct(Product product, IConfiguration _configuration)
+        public static void AddProduct(Product product, IConfiguration configuration)
         {
             String query = @$"INSERT INTO dbo.Products (Name, Price, Description) VALUES (@Name, @Price, @Description);";
-            string connectionString = _configuration.GetConnectionString("PS5DB");
+            string connectionString = configuration.GetConnectionString("PS5DB");
 
             using(SqlConnection cn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -48,6 +48,41 @@ namespace PS5.Models
                 cmd.ExecuteNonQuery();
                 cn.Close();
             }
+        }
+        public static void RemoveProduct(int id, IConfiguration configuration)
+        {
+            String query = @$"DELETE FROM dbo.Products WHERE Id = @id;";
+            string connectionString = configuration.GetConnectionString("PS5DB");
+
+            using (SqlConnection cn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
+        public static Product GetProduct(int id, IConfiguration configuration)
+        {
+            string ConnectionString = configuration.GetConnectionString("PS5DB");
+
+            SqlConnection con = new SqlConnection(ConnectionString);
+            string sql = "SELECT * FROM Products WHERE Id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            Product product = new Product();
+            while (reader.Read())
+            {
+                product.Id = Int32.Parse(reader["Id"].ToString());
+                product.Name = reader["Name"].ToString();
+                product.Price = Double.Parse(reader["Price"].ToString());
+                product.Description = reader["Description"].ToString();
+            }
+            reader.Close(); con.Close();
+            return product;
         }
     }
 }
