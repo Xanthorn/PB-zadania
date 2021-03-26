@@ -35,15 +35,15 @@ namespace PS5.Models
         }
         public static void AddProduct(Product product, IConfiguration configuration)
         {
-            String query = @$"INSERT INTO dbo.Products (Name, Price, Description) VALUES (@Name, @Price, @Description);";
+            String query = "INSERT INTO dbo.Products (Name, Price, Description) VALUES (@Name, @Price, @Description);";
             string connectionString = configuration.GetConnectionString("PS5DB");
 
             using(SqlConnection cn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, cn))
             {
-                cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = product.Name;
-                cmd.Parameters.Add("@Price", SqlDbType.Decimal, 18).Value = product.Price;
-                cmd.Parameters.Add("@Description", SqlDbType.VarChar, 500).Value = product.Description;
+                cmd.Parameters.AddWithValue("@Name", product.Name);
+                cmd.Parameters.AddWithValue("@Price", product.Price);
+                cmd.Parameters.AddWithValue("@Description", product.Description);
                 cn.Open();
                 cmd.ExecuteNonQuery();
                 cn.Close();
@@ -51,13 +51,13 @@ namespace PS5.Models
         }
         public static void RemoveProduct(int id, IConfiguration configuration)
         {
-            String query = @$"DELETE FROM dbo.Products WHERE Id = @id;";
+            String query = "DELETE FROM dbo.Products WHERE Id = @id;";
             string connectionString = configuration.GetConnectionString("PS5DB");
 
             using (SqlConnection cn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, cn))
             {
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                cmd.Parameters.AddWithValue("@Id", id);
                 cn.Open();
                 cmd.ExecuteNonQuery();
                 cn.Close();
@@ -86,16 +86,16 @@ namespace PS5.Models
         }
         public static void UpdateProduct(int id, Product product, IConfiguration configuration)
         {
-            String query = @$"UPDATE dbo.Products SET Name = @Name, Price = @Price, Description = @Description WHERE Id = @Id;";
+            String query = "UPDATE dbo.Products SET Name = @Name, Price = @Price, Description = @Description WHERE Id = @Id;";
             string connectionString = configuration.GetConnectionString("PS5DB");
 
             using (SqlConnection cn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, cn))
             {
-                cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = product.Name;
-                cmd.Parameters.Add("@Price", SqlDbType.Decimal, 18).Value = product.Price;
-                cmd.Parameters.Add("@Description", SqlDbType.VarChar, 500).Value = product.Description;
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                cmd.Parameters.AddWithValue("@Name", product.Name);
+                cmd.Parameters.AddWithValue("@Price", product.Price);
+                cmd.Parameters.AddWithValue("@Description", product.Description);
+                cmd.Parameters.AddWithValue("@Id", id);
                 cn.Open();
                 cmd.ExecuteNonQuery();
                 cn.Close();
