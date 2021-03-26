@@ -84,5 +84,22 @@ namespace PS5.Models
             reader.Close(); con.Close();
             return product;
         }
+        public static void UpdateProduct(int id, Product product, IConfiguration configuration)
+        {
+            String query = @$"UPDATE dbo.Products SET Name = @Name, Price = @Price, Description = @Description WHERE Id = @Id;";
+            string connectionString = configuration.GetConnectionString("PS5DB");
+
+            using (SqlConnection cn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = product.Name;
+                cmd.Parameters.Add("@Price", SqlDbType.Decimal, 18).Value = product.Price;
+                cmd.Parameters.Add("@Description", SqlDbType.VarChar, 500).Value = product.Description;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
     }
 }
