@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data;
+using Microsoft.VisualBasic;
 
 namespace PS5.Models
 {
@@ -84,18 +85,18 @@ namespace PS5.Models
             reader.Close(); con.Close();
             return product;
         }
-        public static void UpdateProduct(int id, Product product, IConfiguration configuration)
+        public static void UpdateProduct(Product product, IConfiguration configuration)
         {
             String query = "UPDATE dbo.Products SET Name = @Name, Price = @Price, Description = @Description WHERE Id = @Id;";
             string connectionString = configuration.GetConnectionString("PS5DB");
-
+            
             using (SqlConnection cn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, cn))
             {
                 cmd.Parameters.AddWithValue("@Name", product.Name);
                 cmd.Parameters.AddWithValue("@Price", product.Price);
                 cmd.Parameters.AddWithValue("@Description", product.Description);
-                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Id", product.Id);
                 cn.Open();
                 cmd.ExecuteNonQuery();
                 cn.Close();
