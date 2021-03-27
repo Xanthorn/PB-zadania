@@ -24,8 +24,8 @@ namespace PS5.Pages
         }
         public IActionResult OnPost()
         {
-            int option = Int32.Parse(Request.Form["Option"]);
-            if(option == 1)
+            int click = Int32.Parse(Request.Form["click"]);
+            if (click == 1)
             {
                 ProductsDB.RemoveProduct(Product.Id, _configuration);
                 return RedirectToPage("/Index");
