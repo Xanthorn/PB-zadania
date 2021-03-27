@@ -12,14 +12,35 @@ namespace PS5.Pages
     public class EditModel : PageModel
     {
         [BindProperty]
-        public Product EditProduct { get; set; }
+        public Product OldProduct { get; set; }
+        [BindProperty]
+        public string ProductDescription { get; set; }
+        [BindProperty]
+        public Product NewProduct { get; set; }
         private readonly IConfiguration _configuration;
         public EditModel(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-        public void OnGet()
+        public void OnGet(int id)
         {
+            OldProduct = ProductsDB.GetProduct(id, _configuration);
+            ProductDescription = OldProduct.Description;
+        }
+        public IActionResult OnPost()
+        {
+            NewProduct.Description = ProductDescription;
+            NewProduct.Id = OldProduct.Id;
+            int click = Int32.Parse(Request.Form["click"]);
+            if (click == 1)
+            {
+                ProductsDB.UpdateProduct(NewProduct, _configuration);
+                return RedirectToPage("/Index");
+            }
+            else
+            {
+                return RedirectToPage("/Index");
+            }
 
         }
     }
