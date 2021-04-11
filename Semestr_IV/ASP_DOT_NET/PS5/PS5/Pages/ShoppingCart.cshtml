@@ -1,0 +1,55 @@
+﻿@page
+@model PS5.Pages.ShoppingCartModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col text-left">
+            <h1>Lista produktów:</h1>
+        </div>
+        <div class="col"></div>
+        <div class="col justify-content-end text-right input-group">
+            <h2 style="margin-right: 0.5rem">Wyczyść koszyk</h2>
+            <form method="post">
+                <button type="submit" class="btn btn-light btn-outline-dark"><img src="~/glyphs/x_32x32.png"/></button>
+            </form>
+        </div>
+    </div>
+</div>
+@{ 
+    if(Model.ShoppingCart.Count == 0)
+    {
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th scope="col" class="col-12">Koszyk jest pusty</th>
+                </tr>
+            </thead>
+        </table>
+    }
+    else
+    {
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr class="text-center">
+                <th scope="col" class="col-2">Id</th>
+                <th scope="col" class="col-6">Nazwa</th>
+                <th scope="col" class="col-3">Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                for (int i = 0; i < Model.ShoppingCart.Count; i++)
+                {
+                <tr>
+                    <th class="col-2">@Model.ShoppingCart[i].Id</th>
+                    <th class="col-6">@Model.ShoppingCart[i].Name</th>
+                    <th class="col-3">@Model.ShoppingCart[i].Price zł</th>
+                </tr>
+                }
+             }
+        </tbody>
+    </table>
+    }
+}

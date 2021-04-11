@@ -3,39 +3,34 @@
 @{
 }
 
-<div class="container">
+<div class="container justify-content-center col-6 border border-dark rounded text-center">
     <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6 border-bottom-0 border-dark rounded-top text-center text-white bg-dark">
+        <div class="col-12 text-white bg-dark">
             <h1>Dodaj nowy produkt</h1>
         </div>
     </div>
     <form method="post">
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6 input-group border-right border-left border-dark">
+        <div class="row justify-content-center" style="padding-top: 1rem">
+            <div class="input-group col-12">
                 <input asp-for="NewProduct.Name" class="form-control" type="text" maxlength="50" placeholder="Nazwa" required />
             </div>
         </div>
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6 input-group border-right border-left border-dark">
+        <div class="row" style="padding-top: 0.25rem">
+            <div class="input-group col-12">
                 <input asp-for="NewProduct.Price" class="form-control" type="text" min="0" max="99999999" pattern="([0-9]{1},[0-9]{1,2})|([1-9]{1}\d*,\d{1,2})|([1-9]\d*)" placeholder="Cena" required />
                 <div class="input-group-append">
                     <span class="input-group-text">zł</span>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6 input-group border-right border-left border-dark">
+        <div class="row" style="padding-top: 0.25rem">
+            <div class="input-group col-12">
                 <textarea asp-for="NewProduct.Description" class="form-control" maxlength="500" placeholder="Opis" required></textarea>
             </div>
         </div>
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6 input-group border-left border-right border-bottom border-dark rounded-bottom justify-content-center">
-                <button type="submit" class="btn btn-dark">Dodaj</button>
+        <div class="row" style="padding-top: 0.5rem; padding-bottom: 0.5rem">
+            <div class="input-group col-12 justify-content-center">
+                <button type="submit" class="btn btn-dark col-4" name="click" value="1">Dodaj</button>
             </div>
         </div>
     </form>
