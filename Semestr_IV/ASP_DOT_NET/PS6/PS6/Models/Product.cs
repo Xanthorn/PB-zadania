@@ -23,5 +23,7 @@ namespace PS6.Models
         [DataType(DataType.Text)]
         [MaxLength(500, ErrorMessage = "Opis nie może być dłuższy niż 500 znaków")]
         public string Description { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Wybierz kategorię z listy")]
+        public int IdCategory { get; set; }
     }
 }

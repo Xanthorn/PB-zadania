@@ -25,6 +25,7 @@ namespace PS6.Models
             {
                 Product product = new Product();
                 product.Id = Int32.Parse(reader["Id"].ToString());
+                product.IdCategory = Int32.Parse(reader["IdCategory"].ToString());
                 product.Name = reader["Name"].ToString();
                 product.Price = Double.Parse(reader["Price"].ToString());
                 product.Description = reader["Description"].ToString();
@@ -41,6 +42,7 @@ namespace PS6.Models
             using (SqlCommand cmd = new SqlCommand("AddProduct", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdCategory", product.IdCategory);
                 cmd.Parameters.AddWithValue("@Name", product.Name);
                 cmd.Parameters.AddWithValue("@Price", product.Price);
                 cmd.Parameters.AddWithValue("@Description", product.Description);
@@ -54,7 +56,7 @@ namespace PS6.Models
             string connectionString = configuration.GetConnectionString("PS5DB");
 
             using (SqlConnection cn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand("DeleteProduct", cn))
+            using (SqlCommand cmd = new SqlCommand("RemoveProduct", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id", id);
@@ -77,6 +79,7 @@ namespace PS6.Models
             while (reader.Read())
             {
                 product.Id = Int32.Parse(reader["Id"].ToString());
+                product.IdCategory = Int32.Parse(reader["IdCategory"].ToString());
                 product.Name = reader["Name"].ToString();
                 product.Price = Double.Parse(reader["Price"].ToString());
                 product.Description = reader["Description"].ToString();
@@ -92,10 +95,11 @@ namespace PS6.Models
             using (SqlCommand cmd = new SqlCommand("UpdateProduct", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", product.Id);
+                cmd.Parameters.AddWithValue("@IdCategory", product.IdCategory);
                 cmd.Parameters.AddWithValue("@Name", product.Name);
                 cmd.Parameters.AddWithValue("@Price", product.Price);
                 cmd.Parameters.AddWithValue("@Description", product.Description);
-                cmd.Parameters.AddWithValue("@Id", product.Id);
                 cn.Open();
                 cmd.ExecuteNonQuery();
                 cn.Close();

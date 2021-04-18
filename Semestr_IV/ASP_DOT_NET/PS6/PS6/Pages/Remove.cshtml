@@ -1,0 +1,46 @@
+﻿@page
+@model PS6.Pages.RemoveModel
+@{
+}
+
+<div class="container col-6 justify-content-center border border-dark rounded">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center text-white bg-dark">
+            <h1>Czy na pewno chcesz usunąć produkt</h1>
+        </div>
+    </div>
+    <form method="post">
+        <div class="row">
+            <div class="col-2 input-group">
+                <p class="text-left text-dark"><strong>Nazwa</strong></p>
+            </div>
+            <div class="col-10 input-group">
+                <p class="text-left text-dark">@Model.Product.Name</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 input-group">
+                <p class="text-left text-dark"><strong>Cena</strong></p>
+            </div>
+            <div class="col-10 input-group">
+                <p class="text-left text-dark">@Model.Product.Price</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 input-group">
+                <p class="text-left text-dark"><strong>Opis</strong></p>
+            </div>
+            <div class="col-10 input-group">
+                <p class="text-left text-dark">@Model.Product.Description</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group">
+                <div class="input-group justify-content-center" style="padding-bottom: 0.5rem">
+                    <button type="submit" name="click" class="btn btn-dark col-4" value="1">Tak</button>
+                    <button type="submit" name="click" class="btn btn-light btn-outline-dark col-4" value="0">Nie</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
