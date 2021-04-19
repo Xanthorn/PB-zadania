@@ -1,0 +1,40 @@
+﻿@page
+@model PS7.Pages.AddModel
+@{
+    ViewData["Title"] = "Dodaj produkt";
+}
+<div class="row justify-content-center">
+    <div class="col-8 bg-dark rounded border border-primary">
+        <div class="row pt-4 text-white">
+            <div class="col text-center" style="font-family:'Comic Sans MS'">
+                <h1 class="text-center">Dodaj produkt</h1>
+            </div>
+        </div>
+        <form method="post">
+            <div class="row pt-4 justify-content-center" style="font-family:Impact">
+                <div class="col-2 bg-danger rounded mr-4 border border-primary text-light">
+                    Nazwa:
+                </div>
+                <div class="col-4">
+                    <input asp-for="product.name" class="form-control bg-primary rounded border border-danger text-white">
+                </div>
+            </div>
+            <div class="row pt-4 justify-content-center" style="font-family:Impact">
+                <div class="col-2 bg-primary rounded mr-4 border border-danger text-white">
+                    Cena:
+                </div>
+                <div class="col-4">
+                    <input asp-for="product.price" class="form-control bg-danger rounded border border-primary text-light">
+                </div>
+            </div>
+            <div class="row pt-4 pb-4 justify-content-center" style="font-family:Impact">
+                <div class="col-6">
+                    <div class="input-group justify-content-center">
+                        <button type="submit" name="button" class="btn btn-lg btn-danger border border-primary mr-4 text-white" placeholder="Dodaj" value="1">Akceptuj</button>
+                        <button type="submit" name="button" class="btn btn-lg btn-primary border border-danger text-white" placeholder="Anuluj" value="0">Anuluj</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@page
+@model PS7.Pages.RemoveModel
+@{
+}
+<div class="row justify-content-center">
+    <div class="col-8 bg-dark rounded border border-primary">
+        <div class="row pt-4 text-white">
+            <div class="col text-center" style="font-family:'Comic Sans MS'">
+                <h1 class="text-center">Czy na pewno chcesz usunąć produkt?</h1>
+            </div>
+        </div>
+        <form method="post">
+            <div class="row pt-4 justify-content-center" style="font-family:Impact">
+                <div class="col-2 bg-primary rounded mr-4 border border-danger text-white">
+                    Id:
+                </div>
+                <div class="col-4 bg-danger rounded border border-primary text-light">
+                    @Model.product.id
+                </div>
+            </div>
+            <div class="row pt-4 justify-content-center" style="font-family:Impact">
+                <div class="col-2 bg-danger rounded mr-4 border border-primary text-light">
+                    Nazwa:
+                </div>
+                <div class="col-4 bg-primary rounded border border-danger text-white">
+                    @Model.product.name
+                </div>
+            </div>
+            <div class="row pt-4 justify-content-center" style="font-family:Impact">
+                <div class="col-2 bg-primary rounded mr-4 border border-danger text-white">
+                    Cena:
+                </div>
+                <div class="col-4 bg-danger rounded border border-primary text-light">
+                    @Model.product.price
+                </div>
+            </div>
+            <div class="row pt-4 pb-4 justify-content-center" style="font-family:Impact">
+                <div class="col-6">
+                    <div class="input-group justify-content-center">
+                        <button name="button" class="btn btn-lg btn-danger border border-primary mr-4 text-white" value="1">Tak</button>
+                        <button name="button" class="btn btn-lg btn-primary border border-danger text-white" value="0">Nie</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

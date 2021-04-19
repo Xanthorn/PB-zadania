@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PS7.DAL;
 
 namespace PS7
 {
@@ -24,6 +25,8 @@ namespace PS7
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.Add(new ServiceDescriptor(typeof(IProductDB), new ProductXmlDB(Configuration)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
