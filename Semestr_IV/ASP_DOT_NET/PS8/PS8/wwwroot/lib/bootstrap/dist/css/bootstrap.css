@@ -6507,6 +6507,20 @@ a.close.disabled {
   vertical-align: text-top !important;
 }
 
+.bg-darkblue {
+    background-color: #002395;
+}
+
+.bg-red {
+    background-color: #ed2939;
+}
+
+a.bg-red:hover, a.bg-red:focus,
+button.bg-red:hover,
+button.bg-red:focus {
+    background-color: #8d2939;
+}
+
 .bg-primary {
   background-color: #007bff !important;
 }
@@ -6633,6 +6647,10 @@ button.bg-dark:focus {
 
 .border-left-0 {
   border-left: 0 !important;
+}
+
+.border-red {
+    border-color: #ed2939;
 }
 
 .border-primary {

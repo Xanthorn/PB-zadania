@@ -24,12 +24,34 @@ namespace PS8.Infrastructure
             string url = httpContext.Request.Path;
             if (url.ToLower().Contains(".jpg"))
             {
-                Image img = Image.FromFile("./wwwroot/img/thinking.jpg");
-                MemoryStream stream = new MemoryStream();
-                img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                Image img;
+                MemoryStream stream;
+                try
+                {
+                    img = Image.FromFile("./img" + url);
+                    
+                }
+                catch
+                {
+                    img = Image.FromFile("./img/error.png");
+                    stream = new MemoryStream();
+                    img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                    httpContext.Response.ContentType = "image/jpeg";
+                    return httpContext.Response.Body.WriteAsync(stream.ToArray(), 0, (int)stream.Length);
+                }
+                Image watermark = Image.FromFile("./img/watermark.png");
+                Graphics imageGraphics = Graphics.FromImage(img);
+                stream = new MemoryStream();
+                using (TextureBrush watermarkBrush = new TextureBrush(watermark))
+                {
+                    int x = (img.Width / 2 - watermark.Width / 2);
+                    int y = (img.Height / 2 - watermark.Height / 2);
+                    watermarkBrush.TranslateTransform(x, y);
+                    imageGraphics.FillRectangle(watermarkBrush, new Rectangle(new Point(x, y), new Size(watermark.Width + 1, watermark.Height)));
+                    img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                }
                 httpContext.Response.ContentType = "image/jpeg";
-                return httpContext.Response.Body.WriteAsync(stream.ToArray(), 0,
-                (int)stream.Length);
+                return httpContext.Response.Body.WriteAsync(stream.ToArray(), 0, (int)stream.Length);
             }
             return _next(httpContext);
         }
