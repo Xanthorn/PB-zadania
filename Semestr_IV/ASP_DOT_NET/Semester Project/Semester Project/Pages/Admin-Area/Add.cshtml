@@ -1,0 +1,44 @@
+﻿@page
+@model Semester_Project.Pages.Admin_Area.AddModel
+@{
+    ViewData["Title"] = "Dodaj produkt";
+}
+<div class="containter">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="container bg-light border border-primary rounded">
+                <div class="row">
+                    <div class="col-12 bg-primary text-white">
+                        <h1 class="display-4 text-center">Dodaj produkt</h1>
+                    </div>
+                </div>
+                <form method="post">
+                    <div class="row justify-content-center pt-4">
+                        <div class="col-4">
+                            <strong>Nazwa</strong>
+                        </div>
+                        <div class="col-4">
+                            <input class="col-12 bg-light border border-primary" type="text" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center pt-2">
+                        <div class="col-4">
+                            <strong>Cena</strong>
+                        </div>
+                        <div class="col-4">
+                            <input class="col-12" type="text" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center pt-4">
+                        <div class="col-4">
+                            <strong>Opis</strong>
+                        </div>
+                        <div class="col-4">
+                            <textarea class="col-12" ></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
