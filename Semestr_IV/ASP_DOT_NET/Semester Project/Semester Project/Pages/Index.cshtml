@@ -1,10 +1,53 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Oferta";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{ 
+    if(Model.Products.Count == 0)
+    {
+        <div class="container">
+            <div class="row pt-4 pb-4 justify-content-center">
+                <div class="col-lg-10 col-12 bg-white border border-primary rounded">
+                    <h1 class="display-4 text-center">Baza produktów jest aktualnie pusta</h1>
+                    <h2 class="text-center">Zajrzyj do nas później</h2>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4 text-center">Nasza Oferta</h1>
+        </div>
+    </div>
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Id produktu</th>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Cena</th>
+                <th scope="col">Kategoria</th>
+                <th scope="col">Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Models.Product product in Model.Products)
+                {
+                    <tr class="table-light">
+                        <th scope="row">@product.Id</th>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>@product.Categories[0].Name</td>
+                        <td></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 </div>
+    }
+}
