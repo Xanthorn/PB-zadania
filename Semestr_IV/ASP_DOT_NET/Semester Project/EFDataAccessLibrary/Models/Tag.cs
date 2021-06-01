@@ -15,5 +15,7 @@ namespace EFDataAccessLibrary.Models
         [MinLength(5)]
         [MaxLength(100)]
         public string Name { get; set; }
+
+        public ICollection<Course> Courses { get; set; }
     }
 }

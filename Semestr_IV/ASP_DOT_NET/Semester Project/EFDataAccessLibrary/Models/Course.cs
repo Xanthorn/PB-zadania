@@ -26,5 +26,8 @@ namespace EFDataAccessLibrary.Models
         [MinLength(30)]
         [MaxLength(1000)]
         public string Description { get; set; }
+
+        [Required]
+        public ICollection<Tag> Tags { get; set; }
     }
 }

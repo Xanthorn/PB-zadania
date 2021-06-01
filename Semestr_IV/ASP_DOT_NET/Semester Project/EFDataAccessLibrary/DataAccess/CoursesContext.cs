@@ -12,7 +12,6 @@ namespace EFDataAccessLibrary.DataAccess
     {
         public CoursesContext(DbContextOptions options) : base(options) { }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<IdOfCoursesAndTags> IdOfCoursesAndTags { get; set; }
         public DbSet<Tag> Tags { get; set; }
     }
 }
