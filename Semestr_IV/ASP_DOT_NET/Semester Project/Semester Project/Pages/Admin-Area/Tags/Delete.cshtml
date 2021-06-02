@@ -1,0 +1,39 @@
+﻿@page
+@model Semester_Project.Pages.Admin_Area.Tags.DeleteTagModel
+@{
+    ViewData["Title"] = "Usuń tag";
+}
+<div class="containter">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="container bg-light border border-primary rounded">
+                <div class="row">
+                    <div class="col-12 bg-primary text-white">
+                        <h1 class="display-4 text-center">Usuń Tag</h1>
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-2">
+                    <div class="col-10 text-center">
+                        Czy na pewno chcesz usunąć tag:
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-2">
+                    <div class="col-3">
+                        <strong>Nazwa</strong>
+                    </div>
+                    <div class="col-7">
+                        @Model.Tag.Name
+                    </div>
+                </div>
+                <form method="post">
+                    <div class="row justify-content-center pt-4 pb-2">
+                        <div class="col-8 text-center">
+                            <button name="IsToBeDeleted" type="submit" class="btn btn-lg btn-primary" value="1">Tak</button>
+                            <button name="IsToBeDeleted" type="submit" class="btn btn-lg border border-primary text-primary bg-white" value="0">Nie</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

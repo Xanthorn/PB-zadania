@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Semester_Project.Pages.Admin_Area
 {
-    public class AddModel : PageModel
+    public class Control_PanelModel : PageModel
     {
         public void OnGet()
         {

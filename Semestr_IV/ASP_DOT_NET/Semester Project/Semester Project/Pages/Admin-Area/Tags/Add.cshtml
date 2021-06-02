@@ -1,0 +1,33 @@
+﻿@page
+@model Semester_Project.Pages.Admin_Area.Tags.AddTagModel
+@{
+    ViewData["Title"] = "Dodaj tag";
+}
+<div class="containter">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="container bg-light border border-primary rounded">
+                <div class="row">
+                    <div class="col-12 bg-primary text-white">
+                        <h1 class="display-4 text-center">Dodaj Tag</h1>
+                    </div>
+                </div>
+                <form method="post">
+                    <div class="row justify-content-center pt-2">
+                        <div class="col-3">
+                            <strong>Nazwa</strong>
+                        </div>
+                        <div class="col-7">
+                            <input class="col-12" type="text" asp-for="Tag.Name"/>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center pt-4 pb-2">
+                        <div class="col-8 text-center">
+                            <button type="submit" class="btn btn-lg btn-primary">Dodaj</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
