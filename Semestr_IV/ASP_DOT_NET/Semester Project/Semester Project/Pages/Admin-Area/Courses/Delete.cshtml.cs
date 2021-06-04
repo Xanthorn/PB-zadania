@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using EFDataAccessLibrary.DataAccess;
 using EFDataAccessLibrary.Models;
 
-namespace Semester_Project.Pages.Admin_Area.Tags
+namespace Semester_Project.Pages.Admin_Area.Courses
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace Semester_Project.Pages.Admin_Area.Tags
         }
 
         [BindProperty]
-        public Tag Tag { get; set; }
+        public Course Course { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace Semester_Project.Pages.Admin_Area.Tags
                 return NotFound();
             }
 
-            Tag = await _context.Tags.FirstOrDefaultAsync(m => m.Id == id);
+            Course = await _context.Courses.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Tag == null)
+            if (Course == null)
             {
                 return NotFound();
             }
@@ -45,11 +45,11 @@ namespace Semester_Project.Pages.Admin_Area.Tags
                 return NotFound();
             }
 
-            Tag = await _context.Tags.FindAsync(id);
+            Course = await _context.Courses.FindAsync(id);
 
-            if (Tag != null)
+            if (Course != null)
             {
-                _context.Tags.Remove(Tag);
+                _context.Courses.Remove(Course);
                 await _context.SaveChangesAsync();
             }
 

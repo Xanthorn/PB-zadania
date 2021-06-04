@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using EFDataAccessLibrary.DataAccess;
 using EFDataAccessLibrary.Models;
 
-namespace Semester_Project.Pages.Admin_Area.Courses
+namespace Semester_Project.Pages.Admin_Area.Tags
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace Semester_Project.Pages.Admin_Area.Courses
             _context = context;
         }
 
-        public IList<Course> Course { get;set; }
+        public IList<Tag> Tag { get;set; }
 
         public async Task OnGetAsync()
         {
-            Course = await _context.Courses.ToListAsync();
+            Tag = await _context.Tags.ToListAsync();
         }
     }
 }

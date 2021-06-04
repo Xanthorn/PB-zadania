@@ -10,16 +10,15 @@ using EFDataAccessLibrary.Models;
 
 namespace Semester_Project.Pages.Admin_Area.Tags
 {
-    public class DeleteModel : PageModel
+    public class DetailsModel : PageModel
     {
         private readonly EFDataAccessLibrary.DataAccess.CoursesContext _context;
 
-        public DeleteModel(EFDataAccessLibrary.DataAccess.CoursesContext context)
+        public DetailsModel(EFDataAccessLibrary.DataAccess.CoursesContext context)
         {
             _context = context;
         }
 
-        [BindProperty]
         public Tag Tag { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -36,24 +35,6 @@ namespace Semester_Project.Pages.Admin_Area.Tags
                 return NotFound();
             }
             return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Tag = await _context.Tags.FindAsync(id);
-
-            if (Tag != null)
-            {
-                _context.Tags.Remove(Tag);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage("./Index");
         }
     }
 }

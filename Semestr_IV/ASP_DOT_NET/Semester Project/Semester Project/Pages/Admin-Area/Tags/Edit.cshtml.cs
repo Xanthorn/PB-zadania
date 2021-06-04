@@ -4,17 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EFDataAccessLibrary.DataAccess;
 using EFDataAccessLibrary.Models;
 
 namespace Semester_Project.Pages.Admin_Area.Tags
 {
-    public class DeleteModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly EFDataAccessLibrary.DataAccess.CoursesContext _context;
 
-        public DeleteModel(EFDataAccessLibrary.DataAccess.CoursesContext context)
+        public EditModel(EFDataAccessLibrary.DataAccess.CoursesContext context)
         {
             _context = context;
         }
@@ -38,22 +39,39 @@ namespace Semester_Project.Pages.Admin_Area.Tags
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see https://aka.ms/RazorPagesCRUD.
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (id == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return Page();
             }
 
-            Tag = await _context.Tags.FindAsync(id);
+            _context.Attach(Tag).State = EntityState.Modified;
 
-            if (Tag != null)
+            try
             {
-                _context.Tags.Remove(Tag);
                 await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TagExists(Tag.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
             return RedirectToPage("./Index");
+        }
+
+        private bool TagExists(int id)
+        {
+            return _context.Tags.Any(e => e.Id == id);
         }
     }
 }
