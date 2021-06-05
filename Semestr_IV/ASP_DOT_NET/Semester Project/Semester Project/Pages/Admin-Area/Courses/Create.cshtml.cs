@@ -22,6 +22,7 @@ namespace Semester_Project.Pages.Admin_Area.Courses
         public IActionResult OnGet()
         {
             Tags = _context.Tags.Where(t => t.Name != "Domyślny").ToList();
+            TagOptions = new SelectList(Tags, nameof(Tag.Id), nameof(Tag.Name));
             return Page();
         }
 
@@ -29,7 +30,12 @@ namespace Semester_Project.Pages.Admin_Area.Courses
         public Course Course { get; set; }
 
         [BindProperty]
+        public int[] TagsSelected { get; set; }
+
         public List<Tag> Tags { get; set; }
+
+        public MultiSelectList TagOptions { get; set; }
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -38,7 +44,15 @@ namespace Semester_Project.Pages.Admin_Area.Courses
             {
                 return Page();
             }
-            //Course.Tags.Add(_context.Tags.Where(t => t.Name = "Domyślny");
+
+            Course.Tags.Add(_context.Tags.Where(t => t.Name == "Domyślny").ToList().First());
+            foreach(int id in TagsSelected)
+            {
+                var tag = _context.Tags.Find(id);
+                Course.Tags.Add(tag);
+                tag.Courses.Add(Course);
+            }
+
             _context.Courses.Add(Course);
             await _context.SaveChangesAsync();
 

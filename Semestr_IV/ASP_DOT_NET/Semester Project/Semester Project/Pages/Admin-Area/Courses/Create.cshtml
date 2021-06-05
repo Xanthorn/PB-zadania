@@ -28,12 +28,9 @@
                 <input asp-for="Course.Description" class="form-control" />
                 <span asp-validation-for="Course.Description" class="text-danger"></span>
             </div>
-            @{ 
-                if(Model.Tags.Count > 0)
-            {
-
-            }
-            }
+            <div class="form-group">
+                <select asp-for="TagsSelected" asp-items="Model.TagOptions"></select>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
