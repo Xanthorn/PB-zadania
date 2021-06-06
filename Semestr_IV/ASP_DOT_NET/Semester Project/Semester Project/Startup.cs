@@ -1,6 +1,7 @@
 using EFDataAccessLibrary.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,21 @@ namespace Semester_Project
             {
                 options.UseSqlServer(Configuration.GetConnectionString("EntityFramework"));
             });
+
+            services.AddAuthentication("CookieAuthentication")
+            .AddCookie("CookieAuthentication", config =>
+            {
+                config.Cookie.HttpOnly = true;
+                config.Cookie.SecurePolicy = CookieSecurePolicy.None;
+                config.Cookie.Name = "UserLoginCookie";
+                config.LoginPath = "/Login";
+                config.Cookie.SameSite = SameSiteMode.Strict;
+            });
+
+            services.AddRazorPages(options => {
+                options.Conventions.AuthorizeFolder("/Admin-Area");
+            });
+
             services.AddRazorPages();
         }
 
@@ -50,6 +66,10 @@ namespace Semester_Project
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
