@@ -5,18 +5,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>List of available courses</h1>
+<h1 class="display-4 text-center">List of available courses</h1>
 
 <p>
     <a asp-page="Admin-Area/Courses/Create">Create New</a>
 </p>
+<h2>Filters</h2>
 <form method="post" asp-page-handler="filters">
     <div class="row pb-4">
         <div class="col-5">
             <select class="form-control" asp-for="SelectedTag" asp-items="Model.TagOptions"></select>
         </div>
         <div class="col-1 text-left">
-            <button class="btn btn-primary">Filter</button>
+            <button class="btn btn-primary">Apply</button>
         </div>
     </div>
 </form>
@@ -29,9 +30,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Course[0].Price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Course[0].Description)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -43,9 +41,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 <a asp-page="Admin-Area/Courses/Edit" asp-route-id="@item.Id">Edit</a> |

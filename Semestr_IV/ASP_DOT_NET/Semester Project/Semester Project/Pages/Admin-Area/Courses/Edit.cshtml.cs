@@ -21,12 +21,10 @@ namespace Semester_Project.Pages.Admin_Area.Courses
             _context = context;
         }
 
-        public Course Course { get; set; }
-
         [BindProperty]
         public FormCourse FormCourse { get; set; }
-
         public SelectList TagOptions { get; set; }
+        public Course Course { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

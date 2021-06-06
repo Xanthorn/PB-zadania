@@ -5,40 +5,47 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 class="display-4 text-center">Edit</h1>
 
 <h4>Course</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="FormCourse.Id" />
-            <div class="form-group">
-                <label asp-for="FormCourse.Name" class="control-label"></label>
-                <input asp-for="FormCourse.Name" class="form-control" />
-                <span asp-validation-for="FormCourse.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FormCourse.Price" class="control-label"></label>
-                <input asp-for="FormCourse.Price" class="form-control" />
-                <span asp-validation-for="FormCourse.Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FormCourse.Description" class="control-label"></label>
-                <input asp-for="FormCourse.Description" class="form-control" />
-                <span asp-validation-for="FormCourse.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FormCourse.SelectedTags" class="control-label"></label>
-            </div>
-            <div class="form-group">
-                <select asp-for="FormCourse.SelectedTags" asp-items="Model.TagOptions"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="col">
+        <div class="container">
+            <form method="post">
+                <div class="row">
+                    <div class="col-6">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input asp-for="FormCourse.Id" hidden />
+                        <div class="form-group">
+                            <label asp-for="FormCourse.Name" class="control-label"></label>
+                            <input asp-for="FormCourse.Name" class="form-control" />
+                            <span asp-validation-for="FormCourse.Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FormCourse.Price" class="control-label"></label>
+                            <input asp-for="FormCourse.Price" class="form-control" />
+                            <span asp-validation-for="FormCourse.Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FormCourse.Description" class="control-label"></label>
+                            <input asp-for="FormCourse.Description" class="form-control" />
+                            <span asp-validation-for="FormCourse.Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="FormCourse.SelectedTags" class="control-label"></label>
+                            <select class="form-control" asp-for="FormCourse.SelectedTags" asp-items="Model.TagOptions" required></select>
+                            <span asp-validation-for="FormCourse.SelectedTags" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" value="Save" class="btn btn-lg btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
