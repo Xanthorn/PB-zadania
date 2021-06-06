@@ -26,6 +26,7 @@ namespace Semester_Project.Models
         [MaxLength(1000)]
         public string Description { get; set; }
 
+        [Display(Name = "Selected Tags")]
         public ICollection<int> SelectedTags { get; set; }
     }
 }
