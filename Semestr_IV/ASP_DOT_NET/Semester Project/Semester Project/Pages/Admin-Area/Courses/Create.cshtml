@@ -2,7 +2,7 @@
 @model Semester_Project.Pages.Admin_Area.Courses.CreateModel
 
 @{
-    ViewData["Title"] = "Dodaj kurs";
+    ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
@@ -29,7 +29,10 @@
                 <span asp-validation-for="Course.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <select asp-for="TagsSelected" asp-items="Model.TagOptions"></select>
+                <label asp-for="Course.SelectedTags" class="control-label"></label>
+            </div>
+            <div class="form-group">
+                <select asp-for="Course.SelectedTags" asp-items="Model.TagOptions"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -39,7 +42,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="/Index">Back to List</a>
 </div>
 
 @section Scripts {

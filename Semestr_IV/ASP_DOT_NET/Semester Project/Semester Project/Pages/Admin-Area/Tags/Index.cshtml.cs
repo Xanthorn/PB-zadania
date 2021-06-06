@@ -23,7 +23,7 @@ namespace Semester_Project.Pages.Admin_Area.Tags
 
         public async Task OnGetAsync()
         {
-            Tag = await _context.Tags.ToListAsync();
+            Tag = await _context.Tags.Include(x => x.Courses).ToListAsync();
         }
     }
 }

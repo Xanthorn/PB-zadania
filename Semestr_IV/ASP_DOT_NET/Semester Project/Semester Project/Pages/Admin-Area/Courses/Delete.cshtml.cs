@@ -53,7 +53,7 @@ namespace Semester_Project.Pages.Admin_Area.Courses
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using EFDataAccessLibrary.DataAccess;
 using EFDataAccessLibrary.Models;
+using Semester_Project.Models;
 
 namespace Semester_Project.Pages.Admin_Area.Courses
 {
@@ -21,20 +22,13 @@ namespace Semester_Project.Pages.Admin_Area.Courses
 
         public IActionResult OnGet()
         {
-            Tags = _context.Tags.Where(t => t.Name != "Domyślny").ToList();
-            TagOptions = new SelectList(Tags, nameof(Tag.Id), nameof(Tag.Name));
+            TagOptions = new SelectList(_context.Tags.Where(x => x.Name != "Default"), nameof(Tag.Id), nameof(Tag.Name));
             return Page();
         }
 
         [BindProperty]
-        public Course Course { get; set; }
-
-        [BindProperty]
-        public int[] TagsSelected { get; set; }
-
-        public List<Tag> Tags { get; set; }
-
-        public MultiSelectList TagOptions { get; set; }
+        public FormCourse Course { get; set; }
+        public SelectList TagOptions { get; set; }
 
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -45,18 +39,25 @@ namespace Semester_Project.Pages.Admin_Area.Courses
                 return Page();
             }
 
-            Course.Tags.Add(_context.Tags.Where(t => t.Name == "Domyślny").ToList().First());
-            foreach(int id in TagsSelected)
+            Course course = new()
+            {
+                Id = Course.Id,
+                Name = Course.Name,
+                Price = Course.Price,
+                Description = Course.Description
+            };
+
+            course.Tags.Add(_context.Tags.Where(x => x.Name == "Default").First());
+            foreach(int id in Course.SelectedTags)
             {
                 var tag = _context.Tags.Find(id);
-                Course.Tags.Add(tag);
-                tag.Courses.Add(Course);
+                course.Tags.Add(tag);
             }
 
-            _context.Courses.Add(Course);
+            _context.Courses.Add(course);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
     }
 }

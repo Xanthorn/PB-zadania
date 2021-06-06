@@ -2,14 +2,24 @@
 @model Semester_Project.Pages.Admin_Area.Courses.IndexModel
 
 @{
-    ViewData["Title"] = "Nasza oferta";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>List of available courses</h1>
 
 <p>
     <a asp-page="Admin-Area/Courses/Create">Create New</a>
 </p>
+<form method="post" asp-page-handler="filters">
+    <div class="row pb-4">
+        <div class="col-5">
+            <select class="form-control" asp-for="SelectedTag" asp-items="Model.TagOptions"></select>
+        </div>
+        <div class="col-1 text-left">
+            <button class="btn btn-primary">Filter</button>
+        </div>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -38,9 +48,9 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="Admin-Area/Courses/Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="Admin-Area/Courses/Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

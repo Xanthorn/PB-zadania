@@ -2,7 +2,7 @@
 @model Semester_Project.Pages.Admin_Area.Courses.EditModel
 
 @{
-    ViewData["Title"] = "Edytuj kurs";
+    ViewData["Title"] = "Edit";
 }
 
 <h1>Edit</h1>
@@ -13,21 +13,27 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Course.Id" />
+            <input type="hidden" asp-for="FormCourse.Id" />
             <div class="form-group">
-                <label asp-for="Course.Name" class="control-label"></label>
-                <input asp-for="Course.Name" class="form-control" />
-                <span asp-validation-for="Course.Name" class="text-danger"></span>
+                <label asp-for="FormCourse.Name" class="control-label"></label>
+                <input asp-for="FormCourse.Name" class="form-control" />
+                <span asp-validation-for="FormCourse.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Course.Price" class="control-label"></label>
-                <input asp-for="Course.Price" class="form-control" />
-                <span asp-validation-for="Course.Price" class="text-danger"></span>
+                <label asp-for="FormCourse.Price" class="control-label"></label>
+                <input asp-for="FormCourse.Price" class="form-control" />
+                <span asp-validation-for="FormCourse.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Course.Description" class="control-label"></label>
-                <input asp-for="Course.Description" class="form-control" />
-                <span asp-validation-for="Course.Description" class="text-danger"></span>
+                <label asp-for="FormCourse.Description" class="control-label"></label>
+                <input asp-for="FormCourse.Description" class="form-control" />
+                <span asp-validation-for="FormCourse.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FormCourse.SelectedTags" class="control-label"></label>
+            </div>
+            <div class="form-group">
+                <select asp-for="FormCourse.SelectedTags" asp-items="Model.TagOptions"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -37,7 +43,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="/Index">Back to List</a>
 </div>
 
 @section Scripts {

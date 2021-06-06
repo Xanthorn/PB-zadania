@@ -28,7 +28,7 @@ namespace Semester_Project.Pages.Admin_Area.Tags
                 return NotFound();
             }
 
-            Tag = await _context.Tags.FirstOrDefaultAsync(m => m.Id == id);
+            Tag = await _context.Tags.Include(x => x.Courses).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Tag == null)
             {

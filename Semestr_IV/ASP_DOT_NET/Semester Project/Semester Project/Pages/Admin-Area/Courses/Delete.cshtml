@@ -2,7 +2,7 @@
 @model Semester_Project.Pages.Admin_Area.Courses.DeleteModel
 
 @{
-    ViewData["Title"] = "Usuń kurs";
+    ViewData["Title"] = "Delete";
 }
 
 <h1>Delete</h1>
@@ -35,6 +35,6 @@
     <form method="post">
         <input type="hidden" asp-for="Course.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <a asp-page="/Index">Back to List</a>
     </form>
 </div>

@@ -28,7 +28,7 @@ namespace Semester_Project.Pages.Admin_Area.Courses
                 return NotFound();
             }
 
-            Course = await _context.Courses.FirstOrDefaultAsync(m => m.Id == id);
+            Course = await _context.Courses.Include(x => x.Tags).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Course == null)
             {

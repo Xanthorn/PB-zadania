@@ -17,6 +17,17 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Tag.Name)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tag.Courses)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                foreach (var item in Model.Tag.Courses)
+                {
+                    <div>@item.Name</div>
+                }
+            }
+        </dd>
     </dl>
 </div>
 <div>
