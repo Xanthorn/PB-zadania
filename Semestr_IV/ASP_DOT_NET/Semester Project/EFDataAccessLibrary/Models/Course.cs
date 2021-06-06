@@ -10,6 +10,11 @@ namespace EFDataAccessLibrary.Models
 {
     public class Course
     {
+        public Course()
+        {
+            this.Tags = new HashSet<Tag>();
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -28,6 +33,6 @@ namespace EFDataAccessLibrary.Models
         public string Description { get; set; }
 
         [Required]
-        public ICollection<Tag> Tags { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

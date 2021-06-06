@@ -9,13 +9,18 @@ namespace EFDataAccessLibrary.Models
 {
     public class Tag
     {
+        public Tag()
+        {
+            this.Courses = new HashSet<Course>();
+        }
+
         public int Id { get; set; }
 
         [Required]
-        [MinLength(5)]
+        [MinLength(2)]
         [MaxLength(100)]
         public string Name { get; set; }
 
-        public ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
     }
 }
